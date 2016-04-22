@@ -7,8 +7,11 @@
 	"active": true,
 	"features": {
 		"authentication": {
+			"enabled": true,
 			"type": "link",
-			"url": "http://oddchannels.com/login"
+			"url": "http://oddchannels.com/login",
+			"expiresIn": 60000,
+			"requestInterval": 10000
 		}
 	},
 	"views": {

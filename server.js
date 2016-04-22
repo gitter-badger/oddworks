@@ -24,6 +24,7 @@ bus.requests.use({}, oddcast.inprocessTransport());
 
 // Set up the store and services you want to use
 const memoryStore = require('./stores/memory');
+const memoryCacheStore = require('./stores/memory-cache');
 const redisStore = require('./stores/redis');
 const redisSearchStore = require('./stores/redis-search');
 const identityService = require('./services/identity');
@@ -37,6 +38,7 @@ module.exports = Promise
 	// Initialize your stores
 	.join(
 		memoryStore.initialize(bus, {types: ['platform', 'channel']}),
+		memoryCacheStore.initialize(bus, {types: ['platform-link']}),
 		redisStore.initialize(bus, {redis, types: ['collection', 'promotion', 'video', 'view']}),
 		redisSearchStore.initialize(bus, {redis, types: ['collection', 'video']})
 	)
